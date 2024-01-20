@@ -1,0 +1,50 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+//0. Create a unique data type as a struct called Movie and give it the string properties: titlle and director
+//1. Create a map called movie, which takes a "uint" as a key and Movie asa value
+//2. Create a function called addMovie, which takes three inputs, movie id, title and director, which assigns a
+//to the integer of the movie the values added back to the movie map. The values should include a title and director name
+//Deploy the contract and update the movie information to the movie map with your favourite movie!
+
+//3. We could also go a little further to write a function "setMovie" to set the title and director data gto a movie genre called "comedy"
+//4. This means we would have o first assign to our Movie Struct the variable "comedy" before we can set this "comedy" to the titl and director 
+//information in the setMovie function.
+
+contract mappingAndStruct{
+
+     mapping(uint => Movie) movie; //movie is the name of the map      
+
+    struct Movie{ //this struct called Movie has the following properties of title and director described 
+//underneath the Movie struct
+        string title;
+        string director;
+    } 
+
+    Movie comedy; //'Movie' is the data type or the struct assigned to 'comedy' the variable genre, which 
+    //is taking the data type or struct of "Movie"
+
+
+    function addMovie(uint movie_id, string memory title, string memory director) public{
+//Here, this mapping function takes in three inputs from the user, "movie_id", "title", and "director"
+        movie[movie_id]= Movie('Home Alone', 'John Hughes'); 
+    //the movie map with its "movie_id" as 'key' is assigned the value of "title" and "director" so that
+// in this case, for the map name called "movie" we have this map of movie ids as key, and each key or movie id
+//has the 'title' and 'director' as its values.
+    }
+
+    function setMovie() public{
+        comedy = Movie("Home Alone", "John Hughes");
+//Here, we go the extra mile to set the Movie struct by assigning to comedy the variables/argument for title and director in the struct, defined as:
+// ('Home Alone'), the director (John Hughes)
+    }
+    function getMovie() public view returns(string memory){
+        return comedy.director;
+    }
+}
+
+
+     
+
+
+
+    
