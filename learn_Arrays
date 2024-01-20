@@ -1,0 +1,65 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+contract learnArrays {
+    uint[] public myArray;
+    uint[] public myArray2;
+    uint[200] public myFixedSizedArray;
+
+//so what if we want to add things to these first two arrays
+//We can do that with the 'push' method/
+//The push() method adds one or more elements to the end of an array, and returns the length of the array
+
+//Now, let's create a function that will add things to the array, pop things off the array and determine the 
+//length of the array
+
+    function push(uint number) public {//since 'push' is supposed to add an element to the end of the list, there is need to pass the argument 'number'
+//for the number we need to add to the list
+        myArray.push(number); //assuming there is a list  [1, 2, 3, 4]; by passing the argument 'number' 
+//into the myArray.push, the 'push' will add the element 'number' to the end of the list, which of course is after 4.
+    }
+
+//the 'pop' method removes the last element from an array and returns that value to the caller
+
+    function pop() public { //since 'pop' is supposed to remove the last item from the list [1, 2, 3, 4], there is no need
+//to pass any argument into the function. 
+        myArray.pop(); //'pop' will remove the last element from the list, which is exactly 4
+    }
+
+//length is a string property that is ussed to determine the length of a string
+
+    function getlength() public view returns(uint){
+        return myArray.length; //notice here we do not call the length with any argument, cos it essentially 
+    //simply counts the length of the string. That's all!
+    }
+
+//so what if as the user, we want to add the list 1,2,3,4 to our array? 
+//well, after compiling and deployng this contract, in the deployed contract, you go to PUSH, type in the first number 
+// and click PUSH. Then you type 2 and repeat the process sequentially till 4. before typing the next number.
+
+//then if you want to remove the last number from the list, you simply go to POP. It removes 4 and gives you the updated 
+//count of the numbers in the list. 
+
+//Then to get the length of the string, you click GETLENGTH; you get the length.
+
+
+//REMOVING OR DELETING ELEMENTS
+
+//Yes, we know pop() will actually remove the last item in the arrayy. But what if we want to remove specific items
+//located at any position of our choice in the array?
+
+function remove(uint i) public{ //i stands for the first index, which the computer reads in binaries, as 0, then 1 and so on
+    delete myArray[i]; //
+    //when you delete in your array, the length remains the same. For example if the list is 1,2,3,4; and we delete
+//2 from the list, the computer reads in binary and therefore starts the reading from zeros, ones and so on.
+//So, it reads the index [i] 1 as now 0; 2 as 1 instead; 3 as 2 instead; and 4 as 3 instead
+//So when we write this delete myArray [i], and the user inputs 2 asthe number to delete, the computer recognizes 2 as 3, 
+//So now that 3, which is 2 to us but in binary language is 3] has been deleted, 
+// what we now have in the place of 3 is zero. 
+//the computer now reads 1 as 0; 2 as 1; deleted 3 as 0; 
+}
+
+}
+
+
+
+
