@@ -1,0 +1,46 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+//'Constructor' is a special function in solidity that we access by typing in 'constructor' keyword
+//It initializes state variables of a contract. The following characteristics of 'characteristics
+//of 'constructor' function
+
+//1. A contract can have only one constructor. 
+//2. A constructor code is executed once when a contract is created, and it is used to initialize contract state
+//3. After a constructor code is executed, the final code is deployed to the blockchain. This code includes public functions
+//and code reachable through public functions; and any constructor code, or any internal method used only by constructor
+// are not included in th final code.
+
+//4. A constructor can either be public or internal
+//5 In case no constructor is defined, a default constructor is present in the contract
+//6. An internal constructor marks the contract as abstract
+
+contract Member {
+    string name; //here we do not initialize the contract
+    uint age; //same, here too
+
+    //then we'll go further down to initialize name and age upon deployment
+
+    constructor(string memory _name, uint _age) public { //here we passed an argument to the constructor 
+//for the user to input a name or age
+        name = _name; //here we assigned the value '_name' to the variable 'name', which is yet to be initialized in the above contract
+        age = _age; //here we assigned the value '_age' to the variable 'age', which is yet to be initialized in the above contract
+    }
+}
+
+//NOW let's see how this works behind the scenes when we want to call the constructor and initialize
+
+
+contract Teacher is Member ('Rachel', 28) { //here, we have passed an argument ('Rachel' & '28')  in this contract, and with 
+//the 'Teacher 'is' "Member"', helps us inherit or derive the data in the contract 'Member'; we therefore give this contract the option to call the data written in the constructor
+
+    function getName() public view returns(string memory){ //here we have asked the function to 'get the Name' 
+//from the constructor. And since we said everything in contract 2 is the same as contract 1, then 'Rachel' is the first argument '_name'
+        return name; //we simply return 'name' 
+    }
+//and when we do deploy, we get the name 'Rachel'
+}
+
+//So what if in 'contract Teacher is Member ('Rachel', 28) {}, we do not want to hardcode this contract argument or information (i.e ('Rachel', 28)
+//instead, we want to pass it in as information upon deployment? How would we do that? Let's see this example in another tab file titled "Teacher 2 -advanced constructor"
+
+
