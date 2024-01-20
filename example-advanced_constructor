@@ -1,0 +1,30 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+//So what if in 'contract Teacher is Member ('Rachel', 28) {}, we do not want to hardcode this contract argument or information (i.e ('Rachel', 28)
+//instead, we want to pass it in as information upon deployment? How would we do that? 
+//Let's see this example here
+
+contract Member {
+    string name; 
+    uint age;
+
+    constructor(string memory _name, uint _age) public {
+        name = _name;
+        age = _age;
+    }
+}
+
+//here is our new example where we do not want to hardcode this contract argument or information (i.e ('Rachel', 28)
+//instead, we want to pass it in as information upon deployment?
+
+contract Teacher is Member { //first, we get rid of the hardcoding of ('Rachel', 28)
+    
+    constructor (string memory n, uint a) Member (n, a) public {}
+//here in our constructor, we simply assign a name 'n' and age 'a'
+//then in our constructor signature, what we do is bring in our 'Member' contract, then by hardcoding Member(n, a), we assign our variables 'n' and 'a' to the constructor 
+//from our Member contract; this will then assign it to the state variables
+
+    function getName() public view returns(string memory){
+        return name;      
+    }
+}
