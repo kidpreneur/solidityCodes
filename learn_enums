@@ -1,0 +1,41 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+//Enums restrict a variable to have one of only a few pre-defined values. 
+//the values in this enumerated list are called enums. With the use of enums, it is 
+//possible to reduce the number of bugs in your code because you are restricting the variables
+//to only do certain things (and nothing more)
+
+contract enumsLearn{
+    //let's write an enum for a food app that offers either large, medium or small options
+
+    enum frenchFriesSize {LARGE, MEDIUM, SMALL} //Hee, we bring in the enum like a data type to define frenchFrenchSize
+//Then we set LARGE, MEDIUM, SMALL as variables {in curly brackets} to the enum.
+
+    frenchFriesSize choice; //We set the options in "frenchFriesSize" into 'choice'.
+
+//So, what if we want to create a default option so that if the user forgets to choose, or is at a loss waht to choose,
+//then, we can create a default choice for them
+
+
+    frenchFriesSize constant defaultChoice = frenchFriesSize.MEDIUM; 
+//This means we set our frenchFriesSize's default choice to MEDIUM; 
+//the 'constant' simply restricts the choice to only 'medium', and no other option
+
+//So, how would we create the functionality so that our customers could switch to - let's say - SMALL option from the default 
+//option
+
+    function setSmall() public {
+        choice = frenchFriesSize.SMALL; //This function will change our choice from the default MEDIUM to SMALL
+    }
+//Now, let's create two functions: One where we can see the change
+
+    function getchoice() public view returns (frenchFriesSize){//here we are setting the function  to return frenchFriesSize as the data type
+//not uint or any other data type. 
+        return choice;
+    }
+//The second function we can create will be to get the default choice
+
+    function getDefaulltChoice() public view returns[uint]{
+        return uint(defaultChoice);
+    }
+}
