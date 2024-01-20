@@ -1,0 +1,48 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+//structs are data types that are used to represent a record. 
+//Suppose you want to keep track of your movies ina  library, you might want to track certain attributes about each movie. 
+//Yes, we did this data type setting with enums, but that was for variables; and that was just to specify restrictions
+
+//BUt with structs, it's a little bit different; with structs, we can actually create these libraries of data information
+//that we can access
+
+//let's create a struct contract for a movie library
+contract learnStructs{
+
+    struct Movie{ 
+//So what we put underneath this struct is all the information that is relevant and important for our movies
+//In the example below, we add a 'director' variable, a 'movie title' variable, and a 'movie ID' variable
+
+        string title;
+        string director;
+        uint movie_id;
+//With these information in our struct, we can create movie libraries and attribute them 
+//to this information in our struct
+    }
+//Now we can create a function that can add or input this information in for the user. But first, 
+//We need to create a variable called 'movie' that can actually take in this information in the movie struct
+//In essence actually, since we have created a struct, we can create as many variables as we want whether it is 
+//Movie scary_movie; or Movie old_movie. For now, we want to stay with "movie" as the variable 
+
+    Movie movie; //'Movie' is the data type assigned to 'movie' the variable, which is taking the data type of Movie
+
+//Now that function we wanted to create can now come in here to add or input this information in for the user
+
+    function setMovie() public {
+        movie = Movie('Blade Runner', 'Ridley Scott', 1); //Here, we then assign the 'movie' variable all 
+    //the variable information in the Movie struct, i.e.; the title (which we have in the argument defined as:
+// 'Blade Runner'), the director (Ridley Scott), and the movie ID (1).
+    }
+
+//Theoretically now, we have set the movie variable to all the information in the mOvie Struct as 
+// "string title" for 'Blade Runner'; "string director" for 'Ridley Scott" and "uint movie_id" for 1
+
+
+//To retrieve this info and view it as a working program, we can write a function to get
+//any of the three information e.g, the movie ID
+
+    function getMovieId() public view returns(uint){
+        return movie.movie_id;
+    }
+}
