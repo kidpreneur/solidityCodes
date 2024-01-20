@@ -1,0 +1,46 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+//Loops allow you to iterate through data and take functional acton depending on the data
+// A "For" Loop is used to repeat a specific block of code over a known number of times. 
+//For example, if we want to check the grade of every student in the class, we loop from 1 to that number
+
+//For a demonstration here, let's write a function that loops through aan array or list of numbers, checking
+//to see the multiples of 4 in that list, say from 1 - 10.
+contract loopContract {
+
+    function checkMultiplesValidity(uint _num, uint _nums) public view returns(bool) {
+        if (_num % _nums == 0) { //This states that if we input any value behind the variable "_num"
+        //and divide by the variable "_nums", if there is no remainder, then... 
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    uint [] public numbersList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //the bracket after uint declaration
+// defines the variable numbersList as an array of numbers. 
+
+    function checkMultiples(uint _number) public view returns(uint) {//when the user puts in the digit "4" in the argument
+// "uint_number" , it goes straight to...
+        uint count = 0; //the count of zero, and then...
+        for(uint i = 1; i < numbersList.length; i++) {//by the vehicle of this "for" loop, it checks the array "numbersList" and runs
+//through the entire length (represented by dot length in "numbersList.length") one by one, beginning or initializing from the first index i = "1"
+ // so lomg as every "i" it touches on from 1 - 10 in the array is not more than (<) the length [10] of the list. 
+ //And for each time we are done with an "i", we give the for loop the power to increment i (that is move on to the next index) through "i++"              
+            if(checkMultiplesValidity(numbersList[i], _number)){
+//Now here, it is the conditionals happening within this "If" statement that will be running under the "for" loop.
+//So, "for" from the beginning or initialized value in the array, once what is in the IF statement in the function "checkMultiplesValidity" is "true"
+//then, the program goes below to apply the count increment (count(++) to make uint count = 1, which means the fucnton has found one digit a multiple of the input "4". 
+//To move on to the next item in the list and lopp through it, the loop statement then goes back to increment "i++" to the next number in the array
+                count++;
+            }
+        }
+        return count; //for each multiple _number
+    } 
+}
+
+
+
+
+
+
