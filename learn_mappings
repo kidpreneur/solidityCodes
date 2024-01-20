@@ -1,0 +1,37 @@
+pragma solidity >= 0.7.0 < 0.9.0;
+
+contract learnMapping{
+
+    mapping(address => uint) public myMap; //myMap is the name of the map
+//"address" is the key; "uint" is the value. Noteworthy is the fact that a key can be string, uint,
+// boolean - anything; value can be anything also
+
+    function setAddress(address _addr, uint _i) public{
+        myMap [_addr] = _i;
+//"address" defines _addr as key; uint defines "_i" as the index value that we'e going to put in 
+//We're simply saying whatever address we set here in the array of myMap, we set it up to receive the index value of _i
+//that we're going to input
+    }
+
+    function getAddress(address _addr) public view returns(uint){
+        return myMap[_addr];
+    }
+
+    function removeAddress(address _addr) public returns(uint){
+        delete myMap[_addr];
+    }
+
+//So here's how to visualize what just happened here:
+//We've got this map of addresses and we can identify each (address) asa key with its (uint) value.
+//This means when we map something, what we're doing is sort of lek creating an array or a struct in the sense that 
+//that we're creating a dictonary; and we're adding things, then taking whatever it is we want to add - that whatever
+//these keys are - and we're then adding them to this value.
+//so, in this case we want addresses as our key, and each address has an index; and then we can now keep track of them
+
+//so now if I go to the deployed contracts after compiling and copying any of the ether addresses in the account of our
+//remix VM, paste it as the key in the "setAddress" option of our mapped data, and type in, let's say, uint 25 as the key
+//Then we go to the "getAddress" option of our mapped data, and type in our address, we see that we now have the value 
+//of 25. 
+//If we hit "removeAddress", and go to getAddress, we see that it has zero. This zero value is similar to arrays where if we 
+//deleted an item in the list, we weren't actually deleting them, they would still have the value of zero as read in binary
+}
